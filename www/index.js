@@ -4,10 +4,12 @@ $(document).on('pageinit', '#login', function(){
                 // Send data to server through the ajax call
                 // action is functionality we want to call and outputJSON is our data
                     $.ajax({url: 'http://websys3.stern.nyu.edu/~websysF14GB4/websys/check.php',
-                        data: {action : 'login', formData : $('#check-user').serialize()},
+                        //data: {action : 'login', formData : $('#check-user').serialize()},
+						data: {formData : $('#check-user').serialize()},
                         type: 'post',                  
                         async: 'true',
                         dataType: 'jsonp',
+						jsonpCallback: 'successCallback',
                         beforeSend: function() {
                             // This callback function will trigger before data is sent
                             $.mobile.showPageLoadingMsg(true); // This will show ajax spinner
@@ -26,7 +28,10 @@ $(document).on('pageinit', '#login', function(){
                         error: function (request,error) {
                             // This callback function will trigger on unsuccessful action               
                             alert('Network error has occurred please try again!');
-                        }
+                        },
+						successCallback:function(){
+
+        				}
                     });                  
             } else {
                 alert('Please fill all necessary fields');
