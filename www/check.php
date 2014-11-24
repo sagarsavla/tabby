@@ -2,18 +2,32 @@
 
 header('content-type: application/json; charset=utf-8');
 header("access-control-allow-origin: *");
-    // We don't need action for this tutorial, but in a complex code you need a way to determine Ajax action nature
-    //$action = $_POST['action'];
-    // Decode JSON object into readable PHP object
-    //$formData = json_decode($_POST['formData']);
 
-    // Get username
-    //$username = $formData->{'username'};
-    // Get password
-    //$password = $formData->{'password'};
+$username = $_GET['username'];
+$password = $_GET['password'];
 
-    // Lets say everything is in order
-    $output = array('status' => true, 'massage' => 'Welcome!');
+  /* connect to the db */
+  $link = mysql_connect('websys3.stern.nyu.edu','websysF14GB4','websysF14GB4!!') or die('Cannot connect to the DB');
+  mysql_select_db('websysF14GB4',$link) or die('Cannot select the DB');
+
+$query = "SELECT * FROM USER WHERE   USERNAME='".mysql_real_escape_string($username)."' AND PASSWORD='".mysql_real_escape_string($password)."'";
+  $result = mysql_query($query,$link) or die('Errant query:  '.$query);
+
+  /*   echo mysql_num_rows($result);*/
+
+  if(mysql_num_rows($result))
+    {
+        $output = array('status' => true, 'massage' => 'Welcome!');
+
+    }
+  else
+    {
+        $output = array('status' => false, 'massage' => 'Welcome!');
+
+    }
+
+  /* disconnect from the db */
+  @mysql_close($link);
 
 $json = json_encode($output);
 

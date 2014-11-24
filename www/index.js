@@ -1,12 +1,13 @@
 $(document).on('pageinit', '#login', function(){ 
         $(document).on('click', '#submit', function() { // catch the form's submit event
             if($('#username').val().length > 0 && $('#password').val().length > 0){
+				var formData = $("#check-user").serialize();
                 // Send data to server through the ajax call
                 // action is functionality we want to call and outputJSON is our data
                     $.ajax({url: 'http://websys3.stern.nyu.edu/~websysF14GB4/websys/check.php',
                         //data: {action : 'login', formData : $('#check-user').serialize()},
-						data: {formData : $('#check-user').serialize()},
-                        type: 'post',                  
+						data:  formData,
+                        type: 'GET',                  
                         async: 'true',
                         dataType: 'jsonp',
 						jsonpCallback: 'successCallback',
