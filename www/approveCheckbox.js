@@ -1,10 +1,10 @@
 $(document).on('pageinit', '#approveCheckbox', function()
 				{
-       
+					var formData = $("#check-user").serialize();       
                     $.ajax(
 							{
 							url: 'http://websys3.stern.nyu.edu/~websysF14GB4/websys/approveList.php',
-//							data:  formData,
+							data:  formData,
                         	type: 'GET',                  
                         	async: 'true',
                         	dataType: 'jsonp',
