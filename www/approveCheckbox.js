@@ -1,5 +1,4 @@
-$(document).on('pageinit', '#approveCheckbox', function()
-				{
+$(document).on('click', '#approve', function() { 
 					var formData = $("#check-user").serialize();       
                     $.ajax(
 							{
@@ -19,15 +18,27 @@ $(document).on('pageinit', '#approveCheckbox', function()
                         						},
                         	success: function (result) {
 
-var records = result.records;
-
-$("#frame").html('<fieldset data-role="controlgroup"><legend>Select transactions to approve</legend></fieldset>');
-for (var i = 0; i < records.length; i++) {
-	var labelContent = "BUYER:" + records[i].record.USERNAME + " ; AMOUNT:" + records[i].record.AMOUNT + " ; TIME:" + records[i].record.BUYDATE;
-    $("fieldset").append('<input type="checkbox" name="' + name + '" id="id' + i + '"><label for="id' + i + '">' + labelContent + '</label>');
-}
-$("#frame").append('<a href="#approveCheckbox" data-role="button" data-inline="true" id="btndelcat">Approve</a>');
-$("#frame").trigger('create');
+							var records = result.records;
+							
+							$("#frame").html('<fieldset data-role="controlgroup"><legend>Select transactions to approve</legend></fieldset>');
+							for (var i = 0; i < records.length; i++) 
+							{
+								var debitOrCredit;
+								if(records[i].record.AMOUNT > 0)
+								{
+									debitOrCredit = "Paid";
+								}
+								else
+								{
+									debitOrCredit = "Used";
+								}
+								var labelContent = "BUYER:" + records[i].record.USERNAME + " ; " +  debitOrCredit +":" 
+													+ records[i].record.AMOUNT + " ; TIME:" + records[i].record.BUYDATE;
+								$("fieldset").append('<input type="checkbox" name="' + name + '" id="' + records[i].record.TRANSACTIONID + '"><label for="' + records[i].record.TRANSACTIONID + '">' + labelContent + '</label>');
+							}
+							$("#frame").append('<a href="#approveCheckbox" data-role="button" data-inline="true" id="btndelcat">Approve</a>');
+							$("#frame").trigger('create');
+                            $.mobile.changePage("#approveCheckbox");                        
                         								},
                         	error: function (request,error) {
 							                            // This callback function will trigger on unsuccessful action               
@@ -40,3 +51,4 @@ $("#frame").trigger('create');
                    
 		            return false; // cancel original event to prevent form submitting
 					});   
+//				});
