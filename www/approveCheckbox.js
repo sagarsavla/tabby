@@ -19,7 +19,7 @@ $(document).on('click', '#approve', function() {
                         	success: function (result) {
 
 							var records = result.records;
-							
+
 							$("#frame").html('<fieldset data-role="controlgroup"><legend>Select transactions to approve</legend></fieldset>');
 							for (var i = 0; i < records.length; i++) 
 							{
@@ -34,11 +34,12 @@ $(document).on('click', '#approve', function() {
 								}
 								var labelContent = "BUYER:" + records[i].record.USERNAME + " ; " +  debitOrCredit +":" 
 													+ records[i].record.AMOUNT + " ; TIME:" + records[i].record.BUYDATE;
-								$("fieldset").append('<input type="checkbox" name="' + name + '" id="' + records[i].record.TRANSACTIONID + '"><label for="' + records[i].record.TRANSACTIONID + '">' + labelContent + '</label>');
+								$("fieldset").append('<input type="checkbox" name="checkbox" id="' + records[i].record.TRANSACTIONID + '"><label for="' + records[i].record.TRANSACTIONID + '">' + labelContent + '</label>');
 							}
-							$("#frame").append('<a href="#approveCheckbox" data-role="button" data-inline="true" id="btndelcat">Approve</a>');
+							  	
+							$("#frame").append('<input type="button" name="submit" id="userApprove" value="Approve" data-role="button">');
 							$("#frame").trigger('create');
-                            $.mobile.changePage("#approveCheckbox");                        
+                            $.mobile.changePage("#approveCheckbox");       
                         								},
                         	error: function (request,error) {
 							                            // This callback function will trigger on unsuccessful action               
@@ -51,4 +52,3 @@ $(document).on('click', '#approve', function() {
                    
 		            return false; // cancel original event to prevent form submitting
 					});   
-//				});

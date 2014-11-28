@@ -15,10 +15,7 @@ C.USERNAME =\"".$username."\"
 and A.SELLERID=C.USERID  AND A.APPROVEDATE is null
 and B.USERID = A.BUYERID";
 
-#$query = "SELECT * FROM TRANSACTION WHERE   SELLERID=".$sellerid." AND APPROVEDATE is NULL";
-  $result = mysql_query($query,$link) or die('Errant query:  '.$query);
-#echo$query;
-  /*   echo mysql_num_rows($result);*/
+$result = mysql_query($query,$link) or die('Errant query:  '.$query);
 
 $records=array();
 
