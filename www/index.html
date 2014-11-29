@@ -10,6 +10,7 @@
 <script src="index.js"></script>
 <script src="approveCheckbox.js"></script>
 <script src="approveButton.js"></script>
+<script src="logoutButton.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@
       		<label for="password">Password:</label>
       		<input type="password" name="password" id="password" value=""  />
     	</div>
-    	<input type="button" name="submit" id="submit" value="Submit">
+    	<input type="button" name="submit" id="submit" value="Submit" />
        </fieldset>
   </form>  
   </div>  
@@ -38,19 +39,23 @@
 
 <div data-role="page" id="second">
   <div data-role="header">
-  	<a href="#login" data-role="button">Logout</a>  	
+	<input type="button" name="submit" id="logout" value="Logout" data-role="button" />
     <h1>Select Action</h1>
   </div>
   <div data-role="controlgroup">
-  	<input type="button" name="submit" id="buy" value="Buy" data-role="button">
-    <input type="button" name="submit" id="approve" value="Approve" data-role="button">
-    <input type="button" name="submit" id="summary" value="Summary" data-role="button">
+  	<input type="button" name="submit" id="buy" value="Buy" data-role="button" />
+    <input type="button" name="submit" id="approve" value="Approve" data-role="button" />
+    <input type="button" name="submit" id="summary" value="Summary" data-role="button" />
   </div>
 </div>
 
 <div data-role="page" id="approveCheckbox">
-  	<div data-role="header">
+  	<div data-role="header">    	
+  		<input type="button" name="submit" id="logout" value="Logout" data-role="button"/>
+        <input type="button" name="submit" id="actions" value="Actions" data-role="button"/>
+        <input type="button" name="submit" id="refreshApprove" value="Refresh" data-role="button"/>
     	<h1>Approve</h1>
+
   	</div>
 	<div data-role="content">
         <div id="frame"></div>
