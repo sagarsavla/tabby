@@ -11,6 +11,7 @@
 <script src="approveCheckbox.js"></script>
 <script src="approveButton.js"></script>
 <script src="logoutButton.js"></script>
+<script src="buy.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
   <div data-role="content">
   
   <form id="check-user" class="ui-body ui-body-a ui-corner-all" data-ajax="false">
-      <fieldset>
+<!--      <fieldset> -->
       	<div data-role="fieldcontain">
       		<label for="username">Username:</label>
       		<input type="text" name="username" id="username" value=""  />
@@ -32,7 +33,7 @@
       		<input type="password" name="password" id="password" value=""  />
     	</div>
     	<input type="button" name="submit" id="submit" value="Submit" />
-       </fieldset>
+<!--       </fieldset> -->
   </form>  
   </div>  
 </div>
@@ -61,6 +62,19 @@
         <div id="frame"></div>
     </div>
 </div>
+
+<div data-role="page" id="buyTransaction">
+  	<div data-role="header">
+    	<input type="button" name="submit" id="logout" value="Logout" data-role="button"/>
+        <input type="button" name="submit" id="actions" value="Actions" data-role="button"/>
+    	<h1>Buy</h1>
+  	</div>
+	<div data-role="content">
+        <input type="button" name="submit" id="addNewSeller" value="Add Seller" data-role="button"/>
+        <div id="buylist"></div>
+    </div>
+</div>
+
 
 
 </body>
