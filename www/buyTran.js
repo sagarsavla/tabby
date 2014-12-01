@@ -1,10 +1,19 @@
-$(document).on('click', '#buy', function() 
+$(document).on('click', '.buyTransactionButtonClass', function() 
 { 
-  var formData = $("#check-user").serialize();  
+  var self = $("#username").val(); 
+  var other = $(this).attr("id");
+  $("#sellername").val(other);
+  $.mobile.changePage("#addBuyTranaction");
+});   
+
+$(document).on('click', '#addNewSeller', function() 
+{ 
+	var self = $("#username").val(); 
+
   $.ajax(
 		  {
-		  url: 'http://websys3.stern.nyu.edu/~websysF14GB4/websys/buyList.php',
-		  data:  formData,
+		  url: 'http://websys3.stern.nyu.edu/~websysF14GB4/websys/userList.php',
+//		  data:  formData,
 		  type: 'GET',                  
 		  async: 'true',
 		  dataType: 'jsonp',
@@ -20,18 +29,18 @@ $(document).on('click', '#buy', function()
 		  success: function (result) {								
 
 		  var records = result.records;
-		  $("#buylist").html('');
+		  $("#selectsellername").html('');
 		  for (var i = 0; i < records.length; i++) 
-		  {
-			var valueLabel = "Seller:" + records[i].record.USERNAME + " ; Credit:" + records[i].record.AMOUNT;							
-	//		$("#buylist").append('<input type="button" name="'+ records[i].record.USERNAME + '" data-role="button" id="buyTranButton" value="'+valueLabel+'">');
-			
-    		$("#buylist").append('<input class ="buyTransactionButtonClass" type="button" name="buyTransactionButtonClass" data-role="button" id="' + records[i].record.USERNAME + '" value="'+valueLabel+'">');
-
+		  {	
+		  	var sellerName = records[i].record.USERNAME;
+			if(sellerName != self)
+			{
+				$("#selectsellername").append('<option value="' + sellerName +'">' + sellerName + '</option>');
+			}
 		  }
 		  
-		  $("#buylist").trigger('create');
-          $.mobile.changePage("#buyTransaction");                                         
+		  $("#selectsellername").trigger('create');
+          $.mobile.changePage("#addBuyTranactionNoSeller");                                         
 
 									  },
 		  error: function (request,error) {
