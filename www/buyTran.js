@@ -5,11 +5,6 @@ $(document).on('click', '#buyAmountButton', function()
   var depositamount = $("#depositamount").val();
   var buyamount = $("#buyamount").val();
   var buycomment = $("#buycomment").val();
-  alert(self);
-  alert(seller);
-  alert(depositamount);
-  alert(buyamount);
-  alert(buycomment);  
   
     $.ajax(
 		  {
