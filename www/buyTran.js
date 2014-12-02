@@ -50,6 +50,60 @@ $(document).on('click', '#buyAmountButton', function()
   
 });   
 
+$(document).on('click', '#buyAmountButtonNewSeller', function() 
+{ 
+  var self = $("#username").val(); 
+  var seller = $("#selectsellername").val();  
+  var depositamount = $("#depositamountnewseller").val();
+  var buyamount = $("#buyamountnewseller").val();
+  var buycomment = $("#buycommentnewseller").val();
+  
+    $.ajax(
+		  {
+		  url: 'http://websys3.stern.nyu.edu/~websysF14GB4/websys/addBuyTran.php',
+		  data: { buyer: self, seller: seller, depositamount: depositamount, buyamount: buyamount, buycomment: buycomment },
+		  type: 'GET',                  
+		  async: 'true',
+		  dataType: 'jsonp',
+		  jsonpCallback: 'successCallback',
+		  beforeSend: function() {
+									  // This callback function will trigger before data is sent
+									  $.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+								  },
+		  complete: function() {
+									  // This callback function will trigger on data sent/received complete
+									  $.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
+							  },
+		  success: function (result) {								
+
+							if(result.status) 
+							{
+								$("#buy-user-newseller").trigger("reset");
+                                alert('Buyer Transaction Successful!');
+								$.mobile.changePage("#second");                        
+                            } 
+							else 
+							{
+                                alert('Buyer Transaction Unsuccessful!');
+                            }          							
+
+
+									  },
+		  error: function (request,error) {
+									  // This callback function will trigger on unsuccessful action               
+									  alert('Network error has occurred please try again!');
+									  },
+	  successCallback:function(){
+
+								  } 
+		  });        
+ 
+  return false; // cancel original event to prevent form submitting
+
+
+});   
+
+
 
 $(document).on('click', '.buyTransactionButtonClass', function() 
 { 
