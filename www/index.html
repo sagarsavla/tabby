@@ -13,6 +13,7 @@
 <script src="logoutButton.js"></script>
 <script src="buy.js"></script>
 <script src="buyTran.js"></script>
+<script src="newUser.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,6 @@
   <div data-role="content">
   
   <form id="check-user" class="ui-body ui-body-a ui-corner-all" data-ajax="false">
-<!--      <fieldset> -->
       	<div data-role="fieldcontain">
       		<label for="username">Username:</label>
       		<input type="text" name="username" id="username" value=""  />
@@ -34,7 +34,8 @@
       		<input type="password" name="password" id="password" value=""  />
     	</div>
     	<input type="button" name="submit" id="submit" value="Submit" />
-<!--       </fieldset> -->
+      	<input type="button" name="submit" id="registeruser" value="New User" />
+
   </form>  
   </div>  
 </div>
@@ -136,6 +137,32 @@
   	</form>  
   </div>  
 </div>
+
+<div data-role="page" id="newuser">
+  <div data-role="header">
+    <h1>Tabby</h1>       
+  </div>
+  
+  <div data-role="content">
+  
+  <form id="new-user" class="ui-body ui-body-a ui-corner-all" data-ajax="false">
+      	<div data-role="fieldcontain">
+      		<label for="newusername">Username:</label>
+      		<input type="text" name="newusername" id="newusername" value=""  />
+    	</div>
+    	<div data-role="fieldcontain">
+      		<label for="newpassword">Password:</label>
+      		<input type="password" name="newpassword" id="newpassword" value=""  />
+    	</div>
+        <div data-role="fieldcontain">
+      		<label for="email">Email:</label>
+      		<input type="text" name="email" id="email" value=""  />
+    	</div>
+    	<input type="button" name="submit" id="createNewUser" value="Submit" />
+  </form>  
+  </div>  
+</div>
+
 
 </body>
 </html>
