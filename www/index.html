@@ -13,6 +13,7 @@
 <script src="logoutButton.js"></script>
 <script src="buy.js"></script>
 <script src="buyTran.js"></script>
+<script src="buyReport.js"></script>
 <script src="newUser.js"></script>
 </head>
 
@@ -33,7 +34,7 @@
       		<label for="password">Password:</label>
       		<input type="password" name="password" id="password" value=""  />
     	</div>
-    	<input type="button" name="submit" id="submit" value="Submit" />
+    	<input type="button" name="submit" id="submit" value="Login" />
       	<input type="button" name="submit" id="registeruser" value="New User" />
 
   </form>  
@@ -162,6 +163,37 @@
   </form>  
   </div>  
 </div>
+
+<div data-role="page" id="summaryPage">
+  	<div data-role="header">    	
+  		<input type="button" name="submit" id="logout" value="Logout" data-role="button"/>
+        <input type="button" name="submit" id="actions" value="Actions" data-role="button"/>
+    	<h1>Summary</h1>
+  	</div>
+  	<div data-role="controlgroup">
+  		<input type="button" name="submit" id="recentBuyTransactions" value="All Buy Transactions" data-role="button" />
+    	<input type="button" name="submit" id="recentSellTransactions" value="All Sell Transactions" data-role="button" />
+  	</div>
+</div>
+
+<div data-role="page" id="buyTransactionReport">
+  	<div data-role="header">    	
+  		<input type="button" name="submit" id="logout" value="Logout" data-role="button"/>
+        <input type="button" name="submit" id="actions" value="Actions" data-role="button"/>
+    	<h1>All Buy Transactions</h1>
+  	</div>
+	<div id="dynamictable"></div>
+</div>
+
+<div data-role="page" id="sellTransactionReport">
+  	<div data-role="header">    	
+  		<input type="button" name="submit" id="logout" value="Logout" data-role="button"/>
+        <input type="button" name="submit" id="actions" value="Actions" data-role="button"/>
+    	<h1>All Sell Transactions</h1>
+  	</div>
+	<div id="dynamicselltable"></div>
+</div>
+
 
 
 </body>
